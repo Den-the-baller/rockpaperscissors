@@ -7,12 +7,12 @@ function getComputerChoice(){
     } else if (randomSelection == 1) {
         compPick = "Paper"
     } else if (randomSelection == 2) {
-        compPick = "scissors"
+        compPick = "Scissors"
     }
     return compPick
 
 }
 compChoice = ""
 compChoice = getComputerChoice()
-console.log(compchoice)
+console.log(compChoice)
 console.log("EOF")
