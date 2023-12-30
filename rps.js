@@ -30,6 +30,7 @@ while (correctInput == 0){
     } else {
         console.log("Invalid input.")
     }
+    console.log("You picked " +humanChoice+"!" )
 }
 
 
@@ -37,5 +38,5 @@ while (correctInput == 0){
 
 compChoice = ""
 compChoice = getComputerChoice()
-console.log(compChoice)
+console.log("The computer picked "+compChoice+"!")
 console.log("EOF")
