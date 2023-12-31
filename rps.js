@@ -43,16 +43,19 @@ while (sameChoice == 0){
     correctInput = 0
     while (correctInput == 0){
         humanChoice = prompt("Please choose Rock, Paper or Scissors")
-        if (humanChoice == "Rock"){
+       humanChoice = humanChoice.toLowerCase()
+    
+        if (humanChoice == "rock"){
             correctInput = 1
-        } else if (humanChoice == "Scissors"){
+        } else if (humanChoice == "scissors"){
             correctInput = 1
-        } else if (humanChoice == "Paper"){
+        } else if (humanChoice == "paper"){
             correctInput = 1
         } else {
             console.log("Invalid input.")
         }
     }
+    humanChoice = humanChoice[0].toUpperCase() + humanChoice.substring(1)
     console.log("You picked " +humanChoice+"!" )
 
     compChoice = getComputerChoice()
