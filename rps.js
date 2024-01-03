@@ -1,3 +1,4 @@
+
 function getComputerChoice(){
     randomSelection = Math.floor(Math.random() * 3)
     compPick = ""
@@ -10,76 +11,80 @@ function getComputerChoice(){
         compPick = "Scissors"
     }
     return compPick
-
 }
 
-// correctInput = 0
-// console.log("Welcome to your favorite game - Rock, Paper, Scissors. You will be playing against the computer. Good luck!")
+function playRound(round){
+    sameChoice = 0 
+    compChoice = ""
+    while (sameChoice == 0){
+        correctInput = 0
+        while (correctInput == 0){
+            humanChoice = prompt("Round " +round+", please choose Rock, Paper or Scissors")
+        humanChoiceLower = humanChoice.toLowerCase()
+            if (humanChoiceLower == "rock"){
+                correctInput = 1
+            } else if (humanChoiceLower == "scissors"){
+                correctInput = 1
+            } else if (humanChoiceLower == "paper"){
+                correctInput = 1
+            } else {
+                console.log("Invalid input.")
+            }
+        }
+        humanChoice = humanChoice[0].toUpperCase() + humanChoice.substring(1)
+        console.log("You picked " +humanChoice+"!" )
 
-// while (correctInput == 0){
-//     humanChoice = prompt("Please choose Rock, Paper or Scissors")
+        compChoice = getComputerChoice()
+        compChoiceLower = compChoice.toLowerCase()
+        console.log("The computer picked "+compChoice+"!")
 
-//     if (humanChoice == "Rock"){
-//         correctInput = 1
-//     } else if (humanChoice == "Scissors"){
-//         correctInput = 1
-//     } else if (humanChoice == "Paper"){
-//         correctInput = 1
-//     } else {
-//         console.log("Invalid input.")
-//     }
-//     console.log("You picked " +humanChoice+"!" )
-// }
+        if (humanChoiceLower == compChoiceLower) {
+            console.log("You both picked the same thing. Try again!")
 
-
-// compChoice = ""
-// compChoice = getComputerChoice()
-// console.log("The computer picked "+compChoice+"!")
-sameChoice = 0 
-compChoice = ""
-console.log("Welcome to your favorite game - Rock, Paper, Scissors. You will be playing against the computer. Good luck!")
-
-while (sameChoice == 0){
-    correctInput = 0
-    while (correctInput == 0){
-        humanChoice = prompt("Please choose Rock, Paper or Scissors")
-       humanChoice = humanChoice.toLowerCase()
-    
-        if (humanChoice == "rock"){
-            correctInput = 1
-        } else if (humanChoice == "scissors"){
-            correctInput = 1
-        } else if (humanChoice == "paper"){
-            correctInput = 1
+        }else if (compChoiceLower == "rock" && humanChoiceLower == "scissors"){
+            sameChoice = 1
+            console.log("Computer wins round "+round+"")
+            compWincount = compWincount + 1
+            return "Computer"
+        } else if (compChoiceLower == "paper" && humanChoiceLower == "rock"){
+            sameChoice = 1
+            console.log("Computer wins round "+round+"")
+            return "Computer"
+        } else if (compChoiceLower == "scissors" && humanChoiceLower == "paper"){
+            sameChoice = 1
+            console.log("Computer wins round "+round+"")
+            return "Computer"
         } else {
-            console.log("Invalid input.")
+            sameChoice = 1
+            console.log("Nice job, you win round "+round+"")
+            return "Human"
         }
     }
-    humanChoice = humanChoice[0].toUpperCase() + humanChoice.substring(1)
-    console.log("You picked " +humanChoice+"!" )
-
-    compChoice = getComputerChoice()
-    console.log("The computer picked "+compChoice+"!")
-
-
-    if (humanChoice == compChoice) {
-        console.log("You both picked the same thing. Try again!")
-
-    }else if (compChoice == "Rock" && humanChoice == "Scissors"){
-        sameChoice = 1
-        console.log("Computer wins, you lose!")
-    } else if (compChoice == "Paper" && humanChoice == "Rock"){
-        sameChoice = 1
-        console.log("Computer wins, you lose!")
-    } else if (compChoice == "Scissors" && humanChoice == "Paper"){
-        sameChoice = 1
-        console.log("Computer wins, you lose!")
-    } else {
-        sameChoice = 1
-        console.log("Nice job, you win!")
-    }
-
 }
+
+
+console.log("Welcome to your favorite game - Rock, Paper, Scissors. You will be playing 5 rounds against the computer. Good luck!")
+roundCount = 1
+winner = ""
+humanWinCount = 0
+compWinCount = 0
+
+while (roundCount != 6){
+    winner = playRound(roundCount)
+    if (winner == "Human"){
+        humanWinCount = humanWinCount + 1
+    } else{
+        compWinCount = compWinCount + 1
+    }
+    roundCount = roundCount + 1
+}
+
+if (humanWinCount > compWinCount){
+    console.log("Nice job! You win!")
+} else {
+    console.log("The computer wins. Better luck next time")
+}
+
 console.log("That is the end of the gane")
 
 
