@@ -1,7 +1,7 @@
 
 function getComputerChoice(){
-    randomSelection = Math.floor(Math.random() * 3)
-    compPick = ""
+    let randomSelection = Math.floor(Math.random() * 3)
+    let compPick = ""
 
     if (randomSelection == 0) {
         compPick = "Rock"
@@ -14,8 +14,8 @@ function getComputerChoice(){
 }
 
 function playRound(round){
-    sameChoice = 0 
-    compChoice = ""
+    let sameChoice = 0 
+    let compChoice = ""
     while (sameChoice == 0){
         correctInput = 0
         while (correctInput == 0){
@@ -64,10 +64,10 @@ function playRound(round){
 
 
 console.log("Welcome to your favorite game - Rock, Paper, Scissors. You will be playing 5 rounds against the computer. Good luck!")
-roundCount = 1
-winner = ""
-humanWinCount = 0
-compWinCount = 0
+let roundCount = 1
+let winner = ""
+let humanWinCount = 0
+let compWinCount = 0
 
 while (roundCount != 6){
     winner = playRound(roundCount)
